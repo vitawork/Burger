@@ -1,66 +1,38 @@
-
-
 <div class="container">
   <div class="row">
+    <h1>Burger List.</h1>
+  </div>
+  <div class="row">
     <div class=" offset-md-1 col-md-4">
-    <div class="jumbotron">
-      <h2>Desired Burgers</h2>
-               <div class="input-group mb-3">
-               <input type="text" class="form-control" id="newb" placeholder="Add a new burger" aria-label="Add a new burger" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
-                     </div>
-               </div>
-               </div>
-              
+      <div class="jumbotron">
+        <h2>Desired Burgers</h2>
+
+        <ul>
+          {{#each burgers}}
+          {{#unless devoured}}
+          <li>{{this.burger_name}}</li>
+          {{/unless}}
+          {{/each}}
+        </ul>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="newb" placeholder="Add a new burger" aria-label="Add a new burger"
+            aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="jumbotron offset-md-2 col-md-4">
-      <h2 >Devoured Burgers</h2>
+      <h2>Devoured Burgers</h2>
+      <ul>
+        {{#each burgers}}
+        {{#if devoured}}
+        <li>{{this.burger_name}}</li>
+        {{/if}}
+        {{/each}}
+      </ul>
     </div>
   </div>
- </div>
-
-
-
-
-
-
-
-<h1>Cats!</h1>
-
-<h2>Cats that are not sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
-
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Add Cat</button>
-</form>
+</div>

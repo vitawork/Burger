@@ -1,18 +1,19 @@
 // Set up MySQL connection.
+
+// require("dotenv").config();///////////////////////////////
 var mysql = require("mysql");
-require("dotenv").config();///////////////////////////////
-var keys = require("../keys.js");///////////////////////////////
+// var keys = require("../keys.js");///////////////////////////////
 
 
-var connection = mysql.createConnection(keys.database_confi);///////////////////////////
+// var connection = mysql.createConnection(keys.database_confi);///////////////////////////
 
-// var connection = mysql.createConnection({ //////////////////////////////////////
-//   host: "localhost",
-//   port: 3306,
-//   user: "root",
-//   password: "root",
-//   database: "burgers_db"
-// });
+var connection = mysql.createConnection({ //////////////////////////////////////
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "root",
+  database: "burgers_db"
+});
 
 // Make connection.
 connection.connect(function(err) {
