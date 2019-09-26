@@ -14,6 +14,13 @@ router.get("/", function(req, res) {
   });
 });
 
+router.get("/api/burger/:burger_name", function(req, res) {
+  var condition = "burger_name = '" + req.params.burger_name + "'";
+  burger.find(condition, function(data) {
+    res.json(data);
+  });
+});
+
 router.post("/api/burgers", function(req, res) {
   burger.create(["burger_name"], [req.body.burger_name], function(result) {
     // Send back the ID of the new quote

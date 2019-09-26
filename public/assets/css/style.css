@@ -8,9 +8,27 @@
 
 h1 {
   margin: 0 auto;
+  font-family: "Permanent Marker", cursive;
+  color: rgb(202, 207, 209);
+}
+
+h2 {
+  font-family: "Kaushan Script", cursive;
 }
 
 .row1 {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+body {
+  background-image: url("../images/TuaZgC.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: 0;
+  left: 0;
+}
+
+* {
+  font-family: "Patua One", cursive;
 }

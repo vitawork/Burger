@@ -50,6 +50,18 @@ var orm = {
     });
   },
 
+  find: function(tableInput, condition, cb) {
+    var queryString = "SELECT * FROM " + tableInput;
+    queryString += " WHERE ";
+    queryString += condition + " ;";
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
