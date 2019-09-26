@@ -24,7 +24,6 @@ router.post("/api/burgers", function(req, res) {
 router.put("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
-
   burger.update(
     {
       devoured: req.body.devoured
@@ -36,7 +35,6 @@ router.put("/api/burgers/:id", function(req, res) {
         return res.status(404).end();
       }
       res.status(200).end();
-
     }
   );
 });

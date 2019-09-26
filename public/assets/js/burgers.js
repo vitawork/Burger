@@ -1,41 +1,42 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-// $(function() {
-//   $(".change-sleep").on("click", function(event) {
-//     var id = $(this).data("id");
-//     var newSleep = $(this).data("newsleep");
-
-//     var newSleepState = {
-//       sleepy: newSleep
-//     };
-
-//     // Send the PUT request.
-//     $.ajax("/api/burgers/" + id, {
-//       type: "PUT",
-//       data: newSleepState
-//     }).then(
-//       function() {
-//         // Reload the page to get the updated list
-//         location.reload();
-//       }
-//     );
-//   });
-
-  $("#button-addon2").on("click", function(event) {
+$(function() {
+  $(".devoured").on("click", function(event) {
     event.preventDefault();
-console.log("test");
-    var newB = {
-      burger_name: $("#newb").val().trim()
-    };
+    var id = $(this).data("id");
 
-    // Send the POST request.
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newB
-    }).then(
-      function() {
+    // Send the PUT request.
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: { devoured: true }
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  $("#aaa").on("click", function(event) {
+    event.preventDefault();
+    if (
+      $("#newb")
+        .val()
+        .trim() !== ""
+    ) {
+      var newB = {
+        burger_name: $("#newb")
+          .val()
+          .trim()
+      };
+      $("#newb").val("");
+      // Send the POST request.
+      $.ajax("/api/burgers", {
+        type: "POST",
+        data: newB
+      }).then(function() {
         // Reload the page to get the updated list
         location.reload();
-      }
-    );
+      });
+    } else {
+      $("#newb").css("border", "solid 3px rgb(231, 93, 93)");
+    }
   });
 });

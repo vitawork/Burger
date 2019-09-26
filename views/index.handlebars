@@ -1,30 +1,34 @@
 <div class="container">
-  <div class="row">
+  <div class="row1 row">
     <h1>Burger List.</h1>
   </div>
   <div class="row">
-    <div class=" offset-md-1 col-md-4">
-      <div class="jumbotron">
-        <h2>Desired Burgers</h2>
+    <div class="jumbotron offset-md-1 col-md-5 offset-lg-1 col-lg-4 ">
 
-        <ul>
-          {{#each burgers}}
-          {{#unless devoured}}
-          <li>{{this.burger_name}}</li>
-          {{/unless}}
-          {{/each}}
-        </ul>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="newb" placeholder="Add a new burger" aria-label="Add a new burger"
-            aria-describedby="button-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add</button>
-          </div>
+      <h2>Desired Burgers</h2>
+
+      <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <li>{{this.burger_name}}
+          <button type="button" class="devoured btn btn-outline-success btn-sm" data-id="{{this.id}}">
+            Devour it!
+          </button>
+        </li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+      <div id="newBForm" class="input-group mb-3">
+        <input type="text" class="form-control" id="newb" placeholder="Add a new burger" aria-label="Add a new burger"
+          aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" id="aaa">Add</button>
         </div>
       </div>
 
+
     </div>
-    <div class="jumbotron offset-md-2 col-md-4">
+    <div class="jumbotron col-md-5 offset-lg-2 col-lg-4">
       <h2>Devoured Burgers</h2>
       <ul>
         {{#each burgers}}

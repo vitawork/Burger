@@ -25,11 +25,11 @@ function objToSql(ob) {
     var value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations 
+      // if string with spaces, add quotations
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
-      
+
       arr.push(key + "=" + value);
     }
   }
@@ -49,6 +49,7 @@ var orm = {
       cb(result);
     });
   },
+
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -59,7 +60,6 @@ var orm = {
     queryString += printQuestionMarks(vals.length);
     queryString += ") ";
 
-
     connection.query(queryString, vals, function(err, result) {
       if (err) {
         throw err;
@@ -68,7 +68,7 @@ var orm = {
       cb(result);
     });
   },
-  
+
   update: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
