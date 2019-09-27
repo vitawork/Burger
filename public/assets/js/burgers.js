@@ -1,5 +1,5 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-function cancelEdit() {
+function cancelInput() {
   $("#newb").css("background-color", "#FFFFFF");
   $("#newb").attr("placeholder", "Add a new burger");
 }
@@ -18,8 +18,6 @@ function insertBurger(event) {
           .trim(),
       function(data) {
         if (data.length === 0) {
-          $("#newb").css("background-color", "#FFFFFF");
-          $("#newb").attr("placeholder", "Add a new burger");
           var newB = {
             burger_name: $("#newb")
               .val()
@@ -42,6 +40,7 @@ function insertBurger(event) {
       }
     );
   } else {
+    $("#newb").focus();
     $("#newb").css("background-color", " rgba(194, 125, 125, 0.842)");
     $("#newb").attr("placeholder", "Please type a new burger");
   }
@@ -50,8 +49,6 @@ function insertBurger(event) {
 $(function() {
   $(".devoured").on("click", function(event) {
     event.preventDefault();
-    $("#newb").css("background-color", "#FFFFFF");
-    $("#newb").attr("placeholder", "Add a new burger");
     var id = $(this).data("id");
 
     // Send the PUT request.
@@ -66,6 +63,6 @@ $(function() {
 
   // $(document).on("click", "#newBB", insertBurger);
   $(document).on("submit", "#newBForm", insertBurger);
-  $(document).on("blur", "#newBB", cancelEdit);
-  $(document).on("blur", "#newb", cancelEdit);
+  $(document).on("blur", "#newBB", cancelInput);
+  $(document).on("blur", "#newb", cancelInput);
 });
